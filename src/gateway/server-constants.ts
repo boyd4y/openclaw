@@ -29,6 +29,6 @@ export const getHandshakeTimeoutMs = () => {
   return DEFAULT_HANDSHAKE_TIMEOUT_MS;
 };
 export const TICK_INTERVAL_MS = 30_000;
-export const HEALTH_REFRESH_INTERVAL_MS = 60_000;
+export const HEALTH_REFRESH_INTERVAL_MS = 1 * 24 * 60 * 60 * 1000;  // 1 天一次，飞书免费API 使用有10000额度问题
 export const DEDUPE_TTL_MS = 5 * 60_000;
 export const DEDUPE_MAX = 1000;
