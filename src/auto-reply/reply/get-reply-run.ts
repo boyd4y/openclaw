@@ -316,7 +316,11 @@ export async function runPreparedReply(
     }
   }
   const sessionIdFinal = sessionId ?? crypto.randomUUID();
-  const sessionFile = resolveSessionFilePath(sessionIdFinal, sessionEntry);
+  // const sessionFile = resolveSessionFilePath(sessionIdFinal, sessionEntry);
+  // TMP fix break change
+  // https://github.com/openclaw/openclaw/issues/15310
+  const sessionFile = resolveSessionFilePath(sessionIdFinal, sessionEntry, { agentId });
+
   const queueBodyBase = baseBodyForPrompt;
   const queuedBody = mediaNote
     ? [mediaNote, mediaReplyHint, queueBodyBase].filter(Boolean).join("\n").trim()
