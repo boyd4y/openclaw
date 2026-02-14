@@ -538,10 +538,11 @@ export async function handleFeishuMessage(params: {
 
   // Dedup check: skip if this message was already processed
   const messageId = event.message.message_id;
-  if (!tryRecordMessage(messageId)) {
-    log(`feishu: skipping duplicate message ${messageId}`);
-    return;
-  }
+  // Disable, since one channel may have multiple bot.
+  // if (!tryRecordMessage(messageId)) {
+  //   log(`feishu: skipping duplicate message ${messageId}`);
+  //   return;
+  // }
 
   let ctx = parseFeishuMessageEvent(event, botOpenId);
   const isGroup = ctx.chatType === "group";
